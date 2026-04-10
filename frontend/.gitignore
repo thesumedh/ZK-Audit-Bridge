@@ -1,22 +1,9 @@
-# Dependencies
 node_modules/
-
-# Build output
+.env*
+!.env.example
 dist/
-compiled/
-
-# Environment (NEVER commit real credentials)
-.env
-.env.local
-
-# Editor
+dist-ssr/
+*.local
 .vscode/
 .idea/
-
-# OS
 .DS_Store
-Thumbs.db
-
-# Logs
-*.log
-npm-debug.log*
