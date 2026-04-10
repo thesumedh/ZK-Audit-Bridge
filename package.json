@@ -4,6 +4,7 @@
   "type": "module",
   "description": "ZK-Audit Bridge + AI Auditor Agent for Midnight Blockchain — Hackathon Submission",
   "scripts": {
+    "postinstall": "cd frontend && npm install",
     "dev": "cd frontend && npm run dev",
     "build": "cd frontend && npm run build",
     "deploy": "node scripts/deploy.mjs",
