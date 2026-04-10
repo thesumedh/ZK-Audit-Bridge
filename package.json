@@ -1,0 +1,21 @@
+{
+  "name": "midnight-zk-audit-bridge",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "ZK-Audit Bridge + AI Auditor Agent for Midnight Blockchain — Hackathon Submission",
+  "scripts": {
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "deploy": "node scripts/deploy.mjs",
+    "compile": "compact compile contracts/audit_bridge.compact ./contracts/compiled",
+    "setup": "node scripts/setup-compiler.mjs"
+  },
+  "dependencies": {
+    "@midnight-ntwrk/compact-runtime": "^0.15.0",
+    "@midnight-ntwrk/dapp-connector-api": "^4.0.1",
+    "@midnight-ntwrk/midnight-js-contracts": "^4.0.4",
+    "@midnight-ntwrk/midnight-js-http-client-proof-provider": "^4.0.4",
+    "@midnight-ntwrk/midnight-js-indexer-public-data-provider": "^4.0.4",
+    "@midnight-ntwrk/midnight-js-level-private-state-provider": "^4.0.4"
+  }
+}

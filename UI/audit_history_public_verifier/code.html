@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZK-Audit | Public Verifier &amp; History</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#221b00",
+                        "background": "#10131a",
+                        "surface-container-lowest": "#0b0e14",
+                        "inverse-primary": "#00696f",
+                        "on-background": "#e1e2eb",
+                        "on-tertiary-fixed-variant": "#554500",
+                        "on-primary-fixed": "#002022",
+                        "tertiary-fixed": "#ffe173",
+                        "on-secondary-fixed": "#2c0051",
+                        "primary": "#e1fdff",
+                        "tertiary-fixed-dim": "#e8c423",
+                        "on-secondary-fixed-variant": "#6700b5",
+                        "secondary-fixed-dim": "#dcb8ff",
+                        "primary-fixed": "#74f5ff",
+                        "tertiary-container": "#fed83a",
+                        "inverse-on-surface": "#2e3037",
+                        "surface-tint": "#00dbe7",
+                        "surface": "#10131a",
+                        "on-surface-variant": "#b9cacb",
+                        "surface-container-highest": "#32353c",
+                        "on-tertiary": "#3b2f00",
+                        "primary-container": "#00f2ff",
+                        "secondary": "#dcb8ff",
+                        "outline-variant": "#3a494b",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#00dbe7",
+                        "on-primary-container": "#006a71",
+                        "on-tertiary-container": "#725e00",
+                        "on-primary": "#00363a",
+                        "surface-container-low": "#191c22",
+                        "surface-variant": "#32353c",
+                        "surface-bright": "#363940",
+                        "on-secondary": "#480081",
+                        "on-surface": "#e1e2eb",
+                        "on-primary-fixed-variant": "#004f54",
+                        "secondary-fixed": "#efdbff",
+                        "outline": "#849495",
+                        "tertiary": "#fff6e4",
+                        "inverse-surface": "#e1e2eb",
+                        "error-container": "#93000a",
+                        "on-secondary-container": "#dcb7ff",
+                        "surface-container-high": "#272a31",
+                        "surface-container": "#1d2026",
+                        "on-error": "#690005",
+                        "secondary-container": "#7701d0",
+                        "surface-dim": "#10131a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #10131a;
+        }
+        .headline-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+    </style>
+</head>
+<body class="text-on-surface selection:bg-primary/30">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-slate-950/80 backdrop-blur-xl shadow-[0_0_20px_rgba(0,242,255,0.08)]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-cyan-400 headline-font">ZK-Audit</span>
+<div class="hidden md:flex items-center gap-6 font-space-grotesk tracking-tight text-sm md:text-base">
+<a class="text-slate-400 hover:text-slate-200 transition-colors" href="#">Dashboard</a>
+<a class="text-slate-400 hover:text-slate-200 transition-colors" href="#">Audit Bridge</a>
+<a class="text-slate-400 hover:text-slate-200 transition-colors" href="#">Policy Engine</a>
+<a class="text-cyan-400 font-bold border-b-2 border-cyan-400 pb-1" href="#">History</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-800/50 rounded-lg transition-all duration-300">
+<span class="material-symbols-outlined text-cyan-400">account_tree</span>
+</button>
+<button class="p-2 hover:bg-slate-800/50 rounded-lg transition-all duration-300">
+<span class="material-symbols-outlined text-cyan-400">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-cyan-400/30">
+<img alt="AI Auditor Profile" data-alt="Futuristic glowing AI avatar representing a security auditor with digital circuitry patterns on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB59UejF8r8g-n0kqN5VqKCqL_V4wZhn-gWBEJVYCTedfz49aa0RA0FrZeKxTfr_QfblFWpoX9JXJjSPg6a-oli8Olpj8Y-sTCejj-prgOxovPg5y4EW725WXwq5N26_GiwkfaHsxAHAd9ssZMXNJ7u0KcOHfQqhVY5RrJu3LIQUQ0_K6ehaHN0jSeXQtfCVI3ezbmwEif3yTf2Eq6ba3yGQcqUOA8KzLzq-aPjoH2qlANRDDF-Zzg_TkNyUz5LsnLAu8D0VqXpd-I"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Supressed based on Shell Logic: This is a specialized history page, prioritizing the content canvas) -->
+<main class="pt-24 pb-16 px-6 max-w-[1400px] mx-auto grid grid-cols-12 gap-8">
+<!-- Header Section -->
+<section class="col-span-12 mb-8">
+<h1 class="headline-font text-5xl md:text-6xl font-bold tracking-tighter text-primary mb-4">Public Verifier &amp; History</h1>
+<p class="text-on-surface-variant max-w-2xl text-lg leading-relaxed">
+                A transparent ledger of cryptographic audit proofs. Verify the integrity of any compliance check without exposing underlying private data.
+            </p>
+</section>
+<!-- Global Compliance Stats (Bento Grid Style) -->
+<section class="col-span-12 lg:col-span-8 grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-primary shadow-lg">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[10px] font-mono text-primary-fixed-dim tracking-widest uppercase">Verified Audits</span>
+</div>
+<div class="headline-font text-4xl font-bold text-on-surface">1.2M+</div>
+<div class="text-xs text-on-surface-variant mt-1">Total conducted globally</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-secondary shadow-lg">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">security</span>
+<span class="text-[10px] font-mono text-secondary-fixed-dim tracking-widest uppercase">Compliance Rate</span>
+</div>
+<div class="headline-font text-4xl font-bold text-on-surface">99.98%</div>
+<div class="text-xs text-on-surface-variant mt-1">Adherence to protocol rules</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-primary shadow-lg">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">encrypted</span>
+<span class="text-[10px] font-mono text-primary-fixed-dim tracking-widest uppercase">Data Shielded</span>
+</div>
+<div class="headline-font text-4xl font-bold text-on-surface">45.8 PB</div>
+<div class="text-xs text-on-surface-variant mt-1">Encrypted state preserved</div>
+</div>
+</section>
+<!-- Proof Verifier Tool (Glassmorphism CTA) -->
+<section class="col-span-12 lg:col-span-4 mb-8">
+<div class="bg-surface-container-highest/40 backdrop-blur-xl p-8 rounded-xl h-full flex flex-col justify-between border border-outline-variant/10">
+<div>
+<h3 class="headline-font text-xl font-bold text-primary mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined">key</span> Proof Verifier Tool
+                    </h3>
+<p class="text-sm text-on-surface-variant mb-6">Input a hash from the Midnight blockchain to verify its cryptographic authenticity.</p>
+<div class="relative group">
+<input class="w-full bg-surface-container-lowest border-none focus:ring-1 focus:ring-primary/40 rounded-lg px-4 py-3 text-sm font-mono text-primary-fixed placeholder:text-outline mb-4 transition-all" placeholder="0x7a2f...c91d" type="text"/>
+</div>
+</div>
+<button class="w-full bg-gradient-to-r from-primary-container to-primary-fixed-dim text-on-primary-container font-bold py-3 rounded-md hover:opacity-90 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">search_check</span>
+                    VERIFY PROOF
+                </button>
+</div>
+</section>
+<!-- Public Audit Ledger -->
+<section class="col-span-12 lg:col-span-8 bg-surface-container-low rounded-xl overflow-hidden shadow-2xl">
+<div class="px-8 py-6 flex items-center justify-between bg-surface-container">
+<h2 class="headline-font text-xl font-bold text-on-surface">Public Audit Ledger</h2>
+<div class="flex gap-2">
+<span class="bg-primary/10 text-primary-fixed-dim text-[10px] font-bold px-2 py-1 rounded border border-primary/20">LIVE FEED</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-lowest text-on-surface-variant text-[10px] uppercase tracking-widest">
+<tr>
+<th class="px-8 py-4 font-medium">Protocol ID</th>
+<th class="px-8 py-4 font-medium">Timestamp</th>
+<th class="px-8 py-4 font-medium">Auditor Agent</th>
+<th class="px-8 py-4 font-medium text-right">Compliance Proof</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<tr class="hover:bg-surface-bright/30 transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="font-mono text-sm text-primary">PRT-7721-ZK</span>
+</div>
+</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant">2023-11-24 14:22:01</td>
+<td class="px-8 py-6 text-sm">V.2.0.4-Midnight</td>
+<td class="px-8 py-6 text-right">
+<span class="bg-surface-container-highest px-3 py-1 rounded-full text-xs font-mono text-primary shadow-[0_0_8px_rgba(0,242,255,0.1)] group-hover:shadow-primary/30 transition-shadow">Verified [9a2c..f1]</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-bright/30 transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="font-mono text-sm text-primary">PRT-6502-ZK</span>
+</div>
+</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant">2023-11-24 14:18:45</td>
+<td class="px-8 py-6 text-sm">V.2.0.4-Midnight</td>
+<td class="px-8 py-6 text-right">
+<span class="bg-surface-container-highest px-3 py-1 rounded-full text-xs font-mono text-primary shadow-[0_0_8px_rgba(0,242,255,0.1)] group-hover:shadow-primary/30 transition-shadow">Verified [8e41..0d]</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-bright/30 transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="font-mono text-sm text-primary">PRT-9001-ZK</span>
+</div>
+</td>
+<td class="px-8 py-6 text-sm text-on-surface-variant">2023-11-24 14:15:10</td>
+<td class="px-8 py-6 text-sm">V.2.0.3-Midnight</td>
+<td class="px-8 py-6 text-right">
+<span class="bg-surface-container-highest px-3 py-1 rounded-full text-xs font-mono text-primary shadow-[0_0_8px_rgba(0,242,255,0.1)] group-hover:shadow-primary/30 transition-shadow">Verified [3f12..bb]</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-8 py-4 bg-surface-container-lowest flex justify-center">
+<button class="text-xs uppercase tracking-widest font-bold text-primary-fixed-dim hover:text-primary transition-colors">Load More History</button>
+</div>
+</section>
+<!-- Network Transparency Feed & Sidebar -->
+<aside class="col-span-12 lg:col-span-4 space-y-8">
+<!-- Network Transparency Feed -->
+<div class="bg-surface-container-low p-8 rounded-xl">
+<h3 class="headline-font text-lg font-bold text-secondary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined">hub</span> Network Updates
+                </h3>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary"></div>
+<div class="w-0.5 h-full bg-outline-variant/20"></div>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface mb-1">Policy Engine Update</p>
+<p class="text-[11px] text-on-surface-variant mb-2">V3.1.2 Ruleset deployed to Mainnet</p>
+<span class="text-[10px] text-outline">14 mins ago</span>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary"></div>
+<div class="w-0.5 h-full bg-outline-variant/20"></div>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface mb-1">Audit Bridge Deployment</p>
+<p class="text-[11px] text-on-surface-variant mb-2">New validator node active in Singapore</p>
+<span class="text-[10px] text-outline">2 hours ago</span>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary"></div>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface mb-1">Protocol Snapshot</p>
+<p class="text-[11px] text-on-surface-variant mb-2">Merkle root hash finalized for block #192,001</p>
+<span class="text-[10px] text-outline">5 hours ago</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 'How it Works' Educational Sidebar -->
+<div class="bg-surface-container-highest p-8 rounded-xl relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-8xl" style="font-variation-settings: 'opsz' 48;">info</span>
+</div>
+<h3 class="headline-font text-lg font-bold text-on-surface mb-4">How it Works</h3>
+<div class="space-y-4 text-sm leading-relaxed text-on-surface-variant">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-primary text-sm">filter_1</span>
+<p>Proofs show <span class="text-on-surface font-semibold">that</span> an audit happened successfully.</p>
+</div>
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-primary text-sm">filter_2</span>
+<p>They confirm adherence to specific compliance <span class="text-on-surface font-semibold">rules</span>.</p>
+</div>
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-primary text-sm">filter_3</span>
+<p>Private data remains <span class="text-on-surface font-semibold">never exposed</span> to the public ledger.</p>
+</div>
+</div>
+<div class="mt-6 pt-6 border-t border-outline-variant/20">
+<a class="text-xs font-bold text-primary flex items-center gap-1 hover:underline" href="#">
+                        READ ZK-DOCS
+                        <span class="material-symbols-outlined text-xs">open_in_new</span>
+</a>
+</div>
+</div>
+</aside>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-40 flex justify-center gap-12 items-center px-8 h-12 bg-slate-900/90 border-t border-slate-800/50 shadow-2xl shadow-cyan-500/10 font-inter font-bold text-[10px]">
+<a class="flex flex-col items-center justify-center text-slate-600 hover:text-cyan-300" href="#">
+<span class="material-symbols-outlined">lock</span>
+<span>Encrypted</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-600 hover:text-cyan-300" href="#">
+<span class="material-symbols-outlined">visibility_lock</span>
+<span>Scoped</span>
+</a>
+<a class="flex flex-col items-center justify-center text-cyan-400 drop-shadow-[0_0_5px_rgba(0,242,255,0.5)]" href="#">
+<span class="material-symbols-outlined">public</span>
+<span>Public</span>
+</a>
+</nav>
+<!-- FAB (Suppressed based on Shell Logic: Context is verification/history, not active task initiation like "Request ZK Proof") -->
+</body></html>

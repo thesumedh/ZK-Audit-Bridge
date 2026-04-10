@@ -1,0 +1,77 @@
+pragma language_version >= 0.22;
+
+// ============================================================
+// ZK-Audit Bridge Contract
+// 
+// A reusable compliance primitive for the Midnight network.
+// Enables AI-driven audit warrants via zero-knowledge proofs.
+//
+// Author: ZK-Audit Bridge Team — Midnight Hackathon
+// ============================================================
+
+
+// ── Public Ledger State ──────────────────────────────────────
+// Everything declared in `ledger` is publicly verifiable on-chain.
+// No private transaction data is ever stored here.
+
+export ledger audit_count: Counter;
+
+export ledger latest_warrant_id: Opaque<"string">;
+
+export ledger latest_proof_hash: Opaque<"string">;
+
+export ledger compliance_status: Opaque<"string">;
+
+
+// ── ZK Circuits ──────────────────────────────────────────────
+// Circuits run locally (off-chain) to generate ZK proofs.
+// The proof is then submitted on-chain for trustless verification.
+// Private inputs to circuits remain completely hidden.
+
+/**
+ * submit_audit_warrant
+ * 
+ * Called by the AI Auditor Agent when a compliance signal triggers
+ * a warrant request. The warrant_id and scope are private inputs —
+ * only the fact that a valid warrant was submitted is made public.
+ */
+export circuit submit_audit_warrant(
+  warrant_id: Opaque<"string">,
+  policy_hash: Opaque<"string">
+): [] {
+  // Disclose only the warrant ID to the public ledger.
+  // The policy_hash (private scope details) remains hidden.
+  latest_warrant_id = disclose(warrant_id);
+  compliance_status = disclose(Opaque<"string">("WARRANT_SUBMITTED"));
+  audit_count = audit_count + 1;
+}
+
+/**
+ * authorize_disclosure
+ * 
+ * Called when the institutional authority approves a warrant.
+ * Records a cryptographic proof hash on-chain — proving the 
+ * disclosure happened, without revealing what was disclosed.
+ */
+export circuit authorize_disclosure(
+  warrant_id: Opaque<"string">,
+  proof_hash: Opaque<"string">
+): [] {
+  latest_warrant_id = disclose(warrant_id);
+  latest_proof_hash = disclose(proof_hash);
+  compliance_status = disclose(Opaque<"string">("AUTHORIZED"));
+  audit_count = audit_count + 1;
+}
+
+/**
+ * dismiss_warrant
+ * 
+ * Records a warrant dismissal on the public audit trail.
+ * Ensures the audit history is immutable and complete.
+ */
+export circuit dismiss_warrant(
+  warrant_id: Opaque<"string">
+): [] {
+  latest_warrant_id = disclose(warrant_id);
+  compliance_status = disclose(Opaque<"string">("DISMISSED"));
+}

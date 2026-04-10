@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .glass-panel {
+        background: rgba(50, 53, 60, 0.2);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+    
+    .zk-glow {
+        box-shadow: 0 0 15px -3px rgba(0, 242, 255, 0.15);
+    }
+}
+
+body {
+    @apply bg-surface-container-lowest text-on-surface font-body overflow-x-hidden transition-colors duration-300;
+}

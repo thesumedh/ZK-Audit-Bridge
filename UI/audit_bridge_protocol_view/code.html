@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#221b00",
+                    "background": "#10131a",
+                    "surface-container-lowest": "#0b0e14",
+                    "inverse-primary": "#00696f",
+                    "on-background": "#e1e2eb",
+                    "on-tertiary-fixed-variant": "#554500",
+                    "on-primary-fixed": "#002022",
+                    "tertiary-fixed": "#ffe173",
+                    "on-secondary-fixed": "#2c0051",
+                    "primary": "#e1fdff",
+                    "tertiary-fixed-dim": "#e8c423",
+                    "on-secondary-fixed-variant": "#6700b5",
+                    "secondary-fixed-dim": "#dcb8ff",
+                    "primary-fixed": "#74f5ff",
+                    "tertiary-container": "#fed83a",
+                    "inverse-on-surface": "#2e3037",
+                    "surface-tint": "#00dbe7",
+                    "surface": "#10131a",
+                    "on-surface-variant": "#b9cacb",
+                    "surface-container-highest": "#32353c",
+                    "on-tertiary": "#3b2f00",
+                    "primary-container": "#00f2ff",
+                    "secondary": "#dcb8ff",
+                    "outline-variant": "#3a494b",
+                    "error": "#ffb4ab",
+                    "primary-fixed-dim": "#00dbe7",
+                    "on-primary-container": "#006a71",
+                    "on-tertiary-container": "#725e00",
+                    "on-primary": "#00363a",
+                    "surface-container-low": "#191c22",
+                    "surface-variant": "#32353c",
+                    "surface-bright": "#363940",
+                    "on-secondary": "#480081",
+                    "on-surface": "#e1e2eb",
+                    "on-primary-fixed-variant": "#004f54",
+                    "secondary-fixed": "#efdbff",
+                    "outline": "#849495",
+                    "tertiary": "#fff6e4",
+                    "inverse-surface": "#e1e2eb",
+                    "error-container": "#93000a",
+                    "on-secondary-container": "#dcb7ff",
+                    "surface-container-high": "#272a31",
+                    "surface-container": "#1d2026",
+                    "on-error": "#690005",
+                    "secondary-container": "#7701d0",
+                    "surface-dim": "#10131a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .zk-glow {
+            box-shadow: 0 0 15px -3px rgba(0, 242, 255, 0.15);
+        }
+        .glass-panel {
+            background: rgba(50, 53, 60, 0.2);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-slate-950/80 backdrop-blur-xl shadow-[0_0_20px_rgba(0,242,255,0.08)]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-cyan-400 font-headline">ZK-Audit</span>
+<div class="hidden md:flex gap-6 font-space-grotesk tracking-tight text-sm">
+<a class="text-slate-400 hover:text-slate-200 transition-colors" href="#">Dashboard</a>
+<a class="text-cyan-400 font-bold border-b-2 border-cyan-400 pb-1" href="#">Audit Bridge</a>
+<a class="text-slate-400 hover:text-slate-200 transition-colors" href="#">Policy Engine</a>
+<a class="text-slate-400 hover:text-slate-200 transition-colors" href="#">History</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800">
+<span class="material-symbols-outlined text-cyan-400 text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-xs text-on-surface-variant w-48" placeholder="Search protocol logs..." type="text"/>
+</div>
+<button class="p-2 hover:bg-slate-800/50 rounded-lg transition-all duration-300">
+<span class="material-symbols-outlined text-cyan-400" data-icon="account_tree">account_tree</span>
+</button>
+<button class="p-2 hover:bg-slate-800/50 rounded-lg transition-all duration-300">
+<span class="material-symbols-outlined text-cyan-400" data-icon="notifications">notifications</span>
+</button>
+<img alt="AI Auditor Profile" class="w-8 h-8 rounded-full border border-cyan-400/30" data-alt="Close up avatar of a digital AI entity with geometric light patterns on a dark sleek surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHfly1as9BCVpZfsJj_O5_jEg-Fi7S9_cfTZPshrJ9Kw6px0jPTAHurqFTMJgVkwCrhJVKMi2WtilfqeeAdAZrY8_qIkbzHd0zz6jW13Vp2EUIqG6orXoRafPR8s88NHO_kBX6XfX05WMi-tVpV3PBAPXl85gr3-9M6XU5DX-Mt8qwAngX0Ra-djADqukIgaE9t3VZeqfG3VhnNyyEPnthjBA04wIYcblERfSb4YJq0jGSvtadGLCHyDdzAHZAIZX-pZsXru4KG4Q"/>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col pt-20 bg-slate-950 w-64 border-r border-slate-800 z-40 hidden md:flex">
+<div class="px-6 py-6 mb-4">
+<div class="flex items-center gap-3 mb-2">
+<img alt="Security Agent" class="w-10 h-10 rounded-lg bg-slate-900 p-1.5" data-alt="Minimalist glowing shield icon with cyan circuitry lines on a deep black background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0Nv1u4bCrvpTqyymRD8ToKSIaH4Dt8j9-CspoHfe5v5auHRYEyC9JfK-0AJiqfv5k2V0xUXsD9WQir1W2PFxV3qU0Qj93ysXsJhrWZ-Unvlzan8wQ4Mop89OuV_gG6aMYYEp_r0DYemYPRxivOBsAKlpDzg3Dj9fWL3h_kheR5n_Ikk1fcaZuEDjeLLwLU2bLXv-rMy1iDNst6XrYV2D2ZhBwCpblw3MmkNPAP2Gz42gCjRHe6XApMpduMFhjsT8vvqiYTWgiOU8"/>
+<div>
+<h3 class="text-cyan-400 font-bold text-sm">AI Auditor Agent</h3>
+<p class="text-[10px] text-slate-500 font-mono">V.2.0.4-Midnight</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-300 hover:bg-slate-900/80 transition-all font-inter tracking-wide text-xs uppercase" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="security">security</span>
+<span>Warrant Queue</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-slate-900 text-cyan-400 border-r-2 border-cyan-400 font-inter tracking-wide text-xs uppercase" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="visibility_off">visibility_off</span>
+<span>Active Scopes</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-300 hover:bg-slate-900/80 transition-all font-inter tracking-wide text-xs uppercase" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="terminal">terminal</span>
+<span>Agent Logs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-300 hover:bg-slate-900/80 transition-all font-inter tracking-wide text-xs uppercase" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="account_balance">account_balance</span>
+<span>Compliance Map</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-300 hover:bg-slate-900/80 transition-all font-inter tracking-wide text-xs uppercase" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="verified_user">verified_user</span>
+<span>Archived Proofs</span>
+</a>
+</nav>
+<div class="p-6">
+<button class="w-full py-3 bg-gradient-to-br from-primary-container to-primary-fixed-dim text-on-primary font-bold rounded-md text-xs uppercase tracking-widest shadow-lg shadow-cyan-500/20 active:scale-95 transition-transform">
+                Request ZK Proof
+            </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="md:ml-64 pt-24 px-6 pb-20 lg:px-10">
+<!-- Hero Section / Status Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8">
+<div class="lg:col-span-8 bg-surface-container-low p-8 rounded-xl relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[100px] -mr-32 -mt-32"></div>
+<div class="relative z-10">
+<h2 class="text-sm font-label uppercase tracking-[0.2em] text-on-surface-variant mb-2">Protocol Health</h2>
+<h1 class="text-4xl md:text-5xl font-headline font-bold text-primary mb-6 tracking-tight">Audit Bridge Protocol View</h1>
+<div class="flex flex-wrap gap-8 items-center">
+<div class="flex flex-col">
+<span class="text-xs font-label text-slate-500 uppercase mb-1">Compliance Score</span>
+<div class="flex items-end gap-2">
+<span class="text-3xl font-headline font-bold text-primary">99.8</span>
+<span class="text-xs font-label text-secondary mb-1">Top 1% Tier</span>
+</div>
+</div>
+<div class="h-10 w-px bg-slate-800 hidden sm:block"></div>
+<div class="flex flex-col">
+<span class="text-xs font-label text-slate-500 uppercase mb-1">Network Status</span>
+<div class="flex items-center gap-2">
+<div class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></div>
+<span class="text-sm font-label text-on-surface">Confidentiality Active</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Toggle UI for Network Confidentiality -->
+<div class="lg:col-span-4 bg-surface-container-low p-8 rounded-xl border border-primary/5 flex flex-col justify-between">
+<div>
+<h3 class="text-sm font-headline font-bold text-on-surface mb-4">Confidentiality Master Switch</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed mb-6">Non-scoped data is cryptographically isolated on the Midnight network. Toggle global encryption layers.</p>
+</div>
+<div class="flex items-center justify-between bg-surface-container-lowest p-4 rounded-lg">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-cyan-400" data-icon="lock">lock</span>
+<span class="text-sm font-medium">Vault Mode</span>
+</div>
+<button class="w-12 h-6 bg-primary-container rounded-full relative">
+<div class="absolute right-1 top-1 w-4 h-4 bg-on-primary rounded-full"></div>
+</button>
+</div>
+</div>
+</div>
+<!-- Dashboard Layout: Pending Warrants & ZK Policy Engine -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Pending Audit Warrants -->
+<div class="lg:col-span-7 space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-headline font-bold tracking-tight">Pending Audit Warrants</h2>
+<span class="px-2 py-1 bg-secondary-container text-secondary text-[10px] font-bold rounded">3 ACTION REQUIRED</span>
+</div>
+<div class="space-y-4">
+<!-- Warrant Card 1 -->
+<div class="group bg-surface-container-low p-6 rounded-xl hover:bg-surface-bright transition-all duration-300 relative border-r-2 border-secondary">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="text-[10px] font-mono text-slate-500">ID: WNT-092-ALPHA</span>
+<h3 class="text-md font-bold text-on-surface mt-1">Institutional Liquidity Probe</h3>
+</div>
+<span class="text-xs text-primary font-label">2h remaining</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-surface-container-lowest p-3 rounded">
+<p class="text-[10px] text-slate-500 uppercase mb-1">Requested Scope</p>
+<p class="text-xs text-on-surface leading-tight font-medium">Transactions &gt; $500k in pool #4492 between UTC 14:00-16:00</p>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded">
+<p class="text-[10px] text-slate-500 uppercase mb-1">Policy Justification</p>
+<p class="text-xs text-on-surface leading-tight font-medium">Anti-Wash Trading Regulation V.4 (Anomaly detected in block 19223)</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 py-2 bg-primary-container/10 border border-primary/20 text-primary-container text-xs font-bold rounded hover:bg-primary-container hover:text-on-primary transition-all">Generate ZK Proof</button>
+<button class="px-4 py-2 bg-slate-900 text-slate-400 text-xs font-bold rounded hover:bg-slate-800">Delegate to DAO</button>
+</div>
+</div>
+<!-- Warrant Card 2 -->
+<div class="group bg-surface-container-low p-6 rounded-xl hover:bg-surface-bright transition-all duration-300 relative border-r-2 border-secondary">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="text-[10px] font-mono text-slate-500">ID: WNT-114-SIGMA</span>
+<h3 class="text-md font-bold text-on-surface mt-1">Cross-Chain Bridge Audit</h3>
+</div>
+<span class="text-xs text-slate-500 font-label">Scheduled</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-6">
+<div class="bg-surface-container-lowest p-3 rounded">
+<p class="text-[10px] text-slate-500 uppercase mb-1">Requested Scope</p>
+<p class="text-xs text-on-surface leading-tight font-medium">Validator key rotation history for Epoch 9022-9045</p>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded">
+<p class="text-[10px] text-slate-500 uppercase mb-1">Policy Justification</p>
+<p class="text-xs text-on-surface leading-tight font-medium">Annual Security Recertification (Protocol Standard 2.2)</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 py-2 bg-primary-container text-on-primary text-xs font-bold rounded hover:shadow-lg hover:shadow-cyan-500/20 transition-all">Authorize Release</button>
+<button class="px-4 py-2 bg-slate-900 text-slate-400 text-xs font-bold rounded">Dismiss</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: ZK Policy Engine -->
+<div class="lg:col-span-5 space-y-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="terminal">terminal</span>
+<h2 class="text-xl font-headline font-bold tracking-tight">ZK Policy Engine</h2>
+</div>
+<div class="bg-surface-container-low rounded-xl overflow-hidden">
+<div class="p-6 border-b border-slate-800">
+<p class="text-xs text-on-surface-variant mb-4">Configure automated cryptographic disclosure rules for incoming warrants.</p>
+<div class="space-y-4">
+<!-- Policy Rule 1 -->
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-lg">
+<div>
+<h4 class="text-xs font-bold text-on-surface">Auto-Approve High Vol</h4>
+<p class="text-[10px] text-slate-500">Volume &gt; $1M with verified KYC hash</p>
+</div>
+<div class="w-10 h-5 bg-secondary-container rounded-full relative">
+<div class="absolute right-1 top-1 w-3 h-3 bg-secondary rounded-full"></div>
+</div>
+</div>
+<!-- Policy Rule 2 -->
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-lg">
+<div>
+<h4 class="text-xs font-bold text-on-surface">DAO Approval Lock</h4>
+<p class="text-[10px] text-slate-500">Non-standard anomaly detections</p>
+</div>
+<div class="w-10 h-5 bg-slate-800 rounded-full relative">
+<div class="absolute left-1 top-1 w-3 h-3 bg-slate-600 rounded-full"></div>
+</div>
+</div>
+<!-- Policy Rule 3 -->
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-lg">
+<div>
+<h4 class="text-xs font-bold text-on-surface">Zero-Knowledge Trace</h4>
+<p class="text-[10px] text-slate-500">Mask all PII on outbound bridge logs</p>
+</div>
+<div class="w-10 h-5 bg-secondary-container rounded-full relative">
+<div class="absolute right-1 top-1 w-3 h-3 bg-secondary rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 bg-slate-900/50">
+<button class="w-full flex items-center justify-center gap-2 py-2 text-xs font-bold text-secondary uppercase tracking-widest hover:bg-secondary/10 transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+                            Add Custom Policy
+                        </button>
+</div>
+</div>
+<!-- Disclosure Logs -->
+<div class="pt-4">
+<h2 class="text-sm font-headline font-bold mb-4 uppercase tracking-wider text-slate-500">Recent Disclosure Logs</h2>
+<div class="space-y-3">
+<div class="flex items-center justify-between py-2 border-b border-slate-800">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-cyan-400 text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+<div>
+<p class="text-xs font-medium">Tx-Scope-882 Verified</p>
+<p class="text-[10px] text-slate-500 font-mono">0x4a...e2f3</p>
+</div>
+</div>
+<span class="text-[10px] text-slate-500">12m ago</span>
+</div>
+<div class="flex items-center justify-between py-2 border-b border-slate-800">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-cyan-400 text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+<div>
+<p class="text-xs font-medium">Warrant ALPHA-01 Released</p>
+<p class="text-[10px] text-slate-500 font-mono">0x92...b881</p>
+</div>
+</div>
+<span class="text-[10px] text-slate-500">1h ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Responsive Bridge) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-16 bg-slate-900/90 backdrop-blur-lg border-t border-slate-800/50 z-50">
+<button class="flex flex-col items-center justify-center text-slate-600 transition-opacity duration-500">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+<span class="font-inter font-bold text-[10px]">Encrypted</span>
+</button>
+<button class="flex flex-col items-center justify-center text-cyan-400 drop-shadow-[0_0_5px_rgba(0,242,255,0.5)]">
+<span class="material-symbols-outlined" data-icon="visibility_lock">visibility_lock</span>
+<span class="font-inter font-bold text-[10px]">Scoped</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-600 transition-opacity duration-500">
+<span class="material-symbols-outlined" data-icon="public">public</span>
+<span class="font-inter font-bold text-[10px]">Public</span>
+</button>
+</nav>
+<!-- Visual Anchor for Desktop Layout -->
+<footer class="hidden md:flex fixed bottom-0 right-0 w-[calc(100%-16rem)] flex justify-center gap-12 items-center px-8 h-12 bg-slate-900/90 border-t border-slate-800/50 z-40">
+<div class="flex items-center gap-2 text-slate-500">
+<span class="material-symbols-outlined text-sm" data-icon="lock">lock</span>
+<span class="font-inter font-bold text-[10px]">ENCRYPTED BASE</span>
+</div>
+<div class="flex items-center gap-2 text-cyan-400 drop-shadow-[0_0_5px_rgba(0,242,255,0.5)]">
+<span class="material-symbols-outlined text-sm" data-icon="visibility_lock">visibility_lock</span>
+<span class="font-inter font-bold text-[10px]">SCOPED CHANNEL</span>
+</div>
+<div class="flex items-center gap-2 text-slate-600">
+<span class="material-symbols-outlined text-sm" data-icon="public">public</span>
+<span class="font-inter font-bold text-[10px]">PUBLIC PROOF</span>
+</div>
+</footer>
+<!-- Background Decorative Elements -->
+<div class="fixed inset-0 pointer-events-none z-0">
+<div class="absolute bottom-0 left-0 w-full h-[512px] bg-gradient-to-t from-primary/5 to-transparent"></div>
+<div class="absolute top-[20%] left-[10%] w-px h-64 bg-gradient-to-b from-transparent via-primary/20 to-transparent"></div>
+<div class="absolute top-[40%] right-[15%] w-px h-96 bg-gradient-to-b from-transparent via-secondary/20 to-transparent"></div>
+</div>
+</body></html>

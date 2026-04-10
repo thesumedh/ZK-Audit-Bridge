@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#221b00",
+                        "background": "#10131a",
+                        "surface-container-lowest": "#0b0e14",
+                        "inverse-primary": "#00696f",
+                        "on-background": "#e1e2eb",
+                        "on-tertiary-fixed-variant": "#554500",
+                        "on-primary-fixed": "#002022",
+                        "tertiary-fixed": "#ffe173",
+                        "on-secondary-fixed": "#2c0051",
+                        "primary": "#e1fdff",
+                        "tertiary-fixed-dim": "#e8c423",
+                        "on-secondary-fixed-variant": "#6700b5",
+                        "secondary-fixed-dim": "#dcb8ff",
+                        "primary-fixed": "#74f5ff",
+                        "tertiary-container": "#fed83a",
+                        "inverse-on-surface": "#2e3037",
+                        "surface-tint": "#00dbe7",
+                        "surface": "#10131a",
+                        "on-surface-variant": "#b9cacb",
+                        "surface-container-highest": "#32353c",
+                        "on-tertiary": "#3b2f00",
+                        "primary-container": "#00f2ff",
+                        "secondary": "#dcb8ff",
+                        "outline-variant": "#3a494b",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#00dbe7",
+                        "on-primary-container": "#006a71",
+                        "on-tertiary-container": "#725e00",
+                        "on-primary": "#00363a",
+                        "surface-container-low": "#191c22",
+                        "surface-variant": "#32353c",
+                        "surface-bright": "#363940",
+                        "on-secondary": "#480081",
+                        "on-surface": "#e1e2eb",
+                        "on-primary-fixed-variant": "#004f54",
+                        "secondary-fixed": "#efdbff",
+                        "outline": "#849495",
+                        "tertiary": "#fff6e4",
+                        "inverse-surface": "#e1e2eb",
+                        "error-container": "#93000a",
+                        "on-secondary-container": "#dcb7ff",
+                        "surface-container-high": "#272a31",
+                        "surface-container": "#1d2026",
+                        "on-error": "#690005",
+                        "secondary-container": "#7701d0",
+                        "surface-dim": "#10131a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(50, 53, 60, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-slate-950/80 backdrop-blur-xl shadow-[0_0_20px_rgba(0,242,255,0.08)]">
+<div class="text-2xl font-bold tracking-tighter text-cyan-400 font-headline">ZK-Audit</div>
+<div class="hidden md:flex items-center gap-8 font-headline tracking-tight text-sm md:text-base">
+<a class="text-slate-400 hover:text-slate-200 transition-colors" href="#">Dashboard</a>
+<a class="text-cyan-400 font-bold border-b-2 border-cyan-400 pb-1" href="#">Audit Bridge</a>
+<a class="text-slate-400 hover:text-slate-200 transition-colors" href="#">Policy Engine</a>
+<a class="text-slate-400 hover:text-slate-200 transition-colors" href="#">History</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-800/50 rounded-lg transition-all duration-300">
+<span class="material-symbols-outlined text-cyan-400">account_tree</span>
+</button>
+<button class="p-2 hover:bg-slate-800/50 rounded-lg transition-all duration-300">
+<span class="material-symbols-outlined text-cyan-400">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant/30">
+<img alt="AI Auditor Profile" class="w-full h-full object-cover" data-alt="Cybersecurity expert avatar with blue neon accents and tactical gear in a dark high-tech environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmtiTJcztEqPk89_hjDYFNjACzyIaNhMLSdM2QOPnnd0ZgPMrMFtdelTKeEyEjCkzNi4MGUX0HL4FdRJv0S7M5L2OvV3eEsf4B4S_t9lEFWw-kLXz2wY4hGRV7DFXzMPCskHZWkBrfmIWAIXwFSCBx_1bppxY8mbmy7-KYcBYDE_SWfoe8Xo5D1MsphZbRPlSRIwgoOoOmiTiUvsK-PiFukHthkbuHW5DvUofR3kFSafEou3grbeClfsSy2QWgx7W_9Y8Jg9SjXBA"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col pt-20 bg-slate-950 h-screen w-64 border-r border-slate-800 hidden md:flex">
+<div class="px-6 py-4 mb-4">
+<div class="text-cyan-400 font-bold font-headline uppercase text-xs tracking-[0.2em] mb-1">AI Auditor Agent</div>
+<div class="text-slate-500 text-[10px] font-mono">V.2.0.4-Midnight</div>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-300 hover:bg-slate-900/80 transition-all rounded-lg font-inter tracking-wide text-xs uppercase" href="#">
+<span class="material-symbols-outlined">security</span>
+                Warrant Queue
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-slate-900 text-cyan-400 border-r-2 border-cyan-400 font-inter tracking-wide text-xs uppercase" href="#">
+<span class="material-symbols-outlined">visibility_off</span>
+                Active Scopes
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-300 hover:bg-slate-900/80 transition-all rounded-lg font-inter tracking-wide text-xs uppercase" href="#">
+<span class="material-symbols-outlined">terminal</span>
+                Agent Logs
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-300 hover:bg-slate-900/80 transition-all rounded-lg font-inter tracking-wide text-xs uppercase" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+                Compliance Map
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-300 hover:bg-slate-900/80 transition-all rounded-lg font-inter tracking-wide text-xs uppercase" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+                Archived Proofs
+            </a>
+</nav>
+<div class="p-6">
+<button class="w-full py-3 bg-primary-container text-on-primary font-bold rounded-md hover:scale-[0.98] transition-transform text-xs uppercase tracking-wider">
+                Request ZK Proof
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-24 px-6 pb-24 min-h-screen">
+<!-- Header Section -->
+<header class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+                        Active Disclosure Flow
+                    </span>
+<span class="text-on-surface-variant font-mono text-xs opacity-60">ID: WR-8829-ZK-04</span>
+</div>
+<h1 class="text-4xl md:text-5xl font-headline font-bold text-primary tracking-tighter">Warrant Verification</h1>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-3 glass-panel border border-primary/15 rounded-md text-primary-fixed-dim font-bold text-xs uppercase tracking-widest hover:bg-surface-bright transition-all">
+                    Export Raw JSON
+                </button>
+<button class="px-6 py-3 bg-gradient-to-br from-primary to-primary-fixed-dim text-on-primary font-bold rounded-md text-xs uppercase tracking-widest shadow-[0_0_15px_rgba(0,242,255,0.2)] hover:scale-[0.98] transition-transform">
+                    Generate Public Proof
+                </button>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- 1. Warrant Proof Verification (Main Visual) -->
+<section class="lg:col-span-8 bg-surface-container-low rounded-xl p-8 relative overflow-hidden flex flex-col justify-between min-h-[320px]">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] -mr-32 -mt-32"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-4 mb-6">
+<div class="h-14 w-14 rounded-full bg-primary-container flex items-center justify-center shadow-[0_0_20px_rgba(0,242,255,0.4)]">
+<span class="material-symbols-outlined text-on-primary-container text-3xl" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div>
+<h2 class="font-headline text-2xl font-bold text-on-surface">Proof of Policy Adherence: Valid</h2>
+<p class="text-on-surface-variant text-sm">ZK-SNARK Verification successful at block #19,203,441</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest p-4 rounded-lg border-l-2 border-primary">
+<div class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1">Circuit ID</div>
+<div class="font-mono text-sm text-on-surface-variant">zkp_auth_v4_p3</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-lg border-l-2 border-primary">
+<div class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1">Merkle Root</div>
+<div class="font-mono text-sm text-on-surface-variant truncate">0x7f2...e4a2</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-lg border-l-2 border-primary">
+<div class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1">Proof Size</div>
+<div class="font-mono text-sm text-on-surface-variant">248 bytes</div>
+</div>
+</div>
+</div>
+<div class="relative z-10 mt-8 flex items-center justify-between text-[10px] font-mono text-on-surface-variant/40">
+<span>GEN_STATE: AUTHENTICATED</span>
+<span>TIMESTAMP: 2023.11.14.04.12.01.UTC</span>
+<span>HASH_MATCH: YES</span>
+</div>
+</section>
+<!-- 2. Policy Guardrails Sidebar -->
+<section class="lg:col-span-4 bg-surface-container-lowest rounded-xl p-8 border border-outline-variant/10">
+<h3 class="font-headline text-lg font-bold text-secondary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">gavel</span>
+                    Policy Guardrails
+                </h3>
+<ul class="space-y-6">
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-xl">timer</span>
+<div>
+<p class="text-xs font-bold text-on-surface uppercase tracking-wider mb-1">Time Range Limited</p>
+<p class="text-xs text-on-surface-variant">Disclosure window restricted to exactly 24h as per Warrant Order #88.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-xl">masks</span>
+<div>
+<p class="text-xs font-bold text-on-surface uppercase tracking-wider mb-1">Identity Redacted</p>
+<p class="text-xs text-on-surface-variant">Wallet address replaced with ephemeral ZK-Identity hash.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-xl">block</span>
+<div>
+<p class="text-xs font-bold text-on-surface uppercase tracking-wider mb-1">No Secondary Pivot</p>
+<p class="text-xs text-on-surface-variant">Graph traversal depth limited to 1st degree relatives only.</p>
+</div>
+</li>
+</ul>
+<div class="mt-10 p-4 rounded bg-secondary/5 border border-secondary/20">
+<p class="text-[10px] text-secondary font-bold uppercase tracking-tighter mb-2">AI COMPLIANCE VERDICT</p>
+<p class="text-xs italic text-on-surface-variant">"The warrant parameters are minimal and adhere to Article 14 of the Encryption Transparency Act."</p>
+</div>
+</section>
+<!-- 3. Scoped Data View (Detailed Table) -->
+<section class="lg:col-span-12 bg-surface-container-low rounded-xl overflow-hidden">
+<div class="px-8 py-6 border-b border-outline-variant/10 flex justify-between items-center">
+<h3 class="font-headline text-xl font-bold text-on-surface flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container">visibility</span>
+                        Scoped Data Disclosure
+                    </h3>
+<div class="flex gap-3">
+<span class="flex items-center gap-1.5 text-[10px] uppercase font-bold text-primary px-2 py-1 bg-primary/10 rounded">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span> Revealed
+                        </span>
+<span class="flex items-center gap-1.5 text-[10px] uppercase font-bold text-slate-600 px-2 py-1 bg-slate-900 rounded">
+<span class="w-1.5 h-1.5 bg-slate-700 rounded-full"></span> Encrypted
+                        </span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant bg-surface-container-high/50">
+<th class="px-8 py-4">Transaction Hash</th>
+<th class="px-8 py-4">Asset</th>
+<th class="px-8 py-4">Quantity</th>
+<th class="px-8 py-4">Counterparty</th>
+<th class="px-8 py-4 text-right">Scope Status</th>
+</tr>
+</thead>
+<tbody class="text-sm font-inter">
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="px-8 py-4 font-mono text-primary">0x4a...9b21</td>
+<td class="px-8 py-4">USDC</td>
+<td class="px-8 py-4">50,000.00</td>
+<td class="px-8 py-4 font-mono text-xs">zkID-992...f0a1</td>
+<td class="px-8 py-4 text-right">
+<span class="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded shadow-[0_0_5px_rgba(0,242,255,0.3)]">REVEALED</span>
+</td>
+</tr>
+<tr class="opacity-40">
+<td class="px-8 py-4 font-mono">••••••••••••</td>
+<td class="px-8 py-4">WETH</td>
+<td class="px-8 py-4">•••••</td>
+<td class="px-8 py-4 font-mono text-xs">••••••••••••</td>
+<td class="px-8 py-4 text-right">
+<span class="text-[10px] font-bold text-slate-500 bg-slate-800 px-2 py-0.5 rounded">ENCRYPTED</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="px-8 py-4 font-mono text-primary">0x1c...e3e8</td>
+<td class="px-8 py-4">USDC</td>
+<td class="px-8 py-4">12,450.00</td>
+<td class="px-8 py-4 font-mono text-xs">zkID-112...a90b</td>
+<td class="px-8 py-4 text-right">
+<span class="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded shadow-[0_0_5px_rgba(0,242,255,0.3)]">REVEALED</span>
+</td>
+</tr>
+<tr class="opacity-40">
+<td class="px-8 py-4 font-mono">••••••••••••</td>
+<td class="px-8 py-4">SOL</td>
+<td class="px-8 py-4">•••••</td>
+<td class="px-8 py-4 font-mono text-xs">••••••••••••</td>
+<td class="px-8 py-4 text-right">
+<span class="text-[10px] font-bold text-slate-500 bg-slate-800 px-2 py-0.5 rounded">ENCRYPTED</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- 4. Cryptographic Trace (Visual Interaction) -->
+<section class="lg:col-span-12 bg-slate-950 rounded-xl p-8 border border-outline-variant/5">
+<h3 class="font-headline text-lg font-bold text-on-surface mb-8">Audit Bridge Interaction Trace</h3>
+<div class="relative flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4">
+<!-- Step 1 -->
+<div class="flex flex-col items-center text-center w-full max-w-[200px]">
+<div class="h-12 w-12 rounded-full glass-panel border border-primary/20 flex items-center justify-center mb-4 relative">
+<span class="material-symbols-outlined text-primary">upload_file</span>
+<div class="absolute -bottom-1 -right-1 h-5 w-5 rounded-full bg-surface-container-highest text-[8px] flex items-center justify-center border border-outline-variant">01</div>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface mb-1">Warrant Submission</p>
+<p class="text-[10px] text-on-surface-variant">Warrant WR-8829 signed by Court Authority</p>
+</div>
+<div class="h-8 w-px md:h-px md:w-full bg-gradient-to-r from-primary/20 via-primary/50 to-primary/20"></div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center text-center w-full max-w-[200px]">
+<div class="h-16 w-16 rounded-full bg-primary/10 border-2 border-primary flex items-center justify-center mb-4 relative scale-110 shadow-[0_0_20px_rgba(0,242,255,0.15)]">
+<span class="material-symbols-outlined text-primary-fixed-dim text-3xl">verified_user</span>
+<div class="absolute -bottom-1 -right-1 h-5 w-5 rounded-full bg-primary text-on-primary text-[8px] flex items-center justify-center font-bold">02</div>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-primary mb-1">Proof Verification</p>
+<p class="text-[10px] text-on-surface-variant">ZK-Circuit validates warrant within policy limits</p>
+</div>
+<div class="h-8 w-px md:h-px md:w-full bg-gradient-to-r from-primary/20 via-secondary/50 to-secondary/20"></div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center text-center w-full max-w-[200px]">
+<div class="h-12 w-12 rounded-full glass-panel border border-secondary/20 flex items-center justify-center mb-4 relative">
+<span class="material-symbols-outlined text-secondary">output</span>
+<div class="absolute -bottom-1 -right-1 h-5 w-5 rounded-full bg-surface-container-highest text-[8px] flex items-center justify-center border border-outline-variant">03</div>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface mb-1">Disclosure Trigger</p>
+<p class="text-[10px] text-on-surface-variant">Selective decryption keys released for scoped items</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-slate-900/90 backdrop-blur-md flex justify-around items-center h-16 z-50 border-t border-slate-800/50">
+<button class="flex flex-col items-center justify-center text-slate-600 hover:text-cyan-300 transition-opacity">
+<span class="material-symbols-outlined">lock</span>
+<span class="text-[8px] font-bold uppercase mt-1">Encrypted</span>
+</button>
+<button class="flex flex-col items-center justify-center text-cyan-400 drop-shadow-[0_0_5px_rgba(0,242,255,0.5)]">
+<span class="material-symbols-outlined">visibility_lock</span>
+<span class="text-[8px] font-bold uppercase mt-1 font-inter">Scoped</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-600 hover:text-cyan-300 transition-opacity">
+<span class="material-symbols-outlined">public</span>
+<span class="text-[8px] font-bold uppercase mt-1">Public</span>
+</button>
+</nav>
+<!-- FAB Suppression Logic: No FAB rendered on detailed Transactional/Verification screens -->
+</body></html>
