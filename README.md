@@ -3,7 +3,7 @@
 ### Privacy-Preserving Compliance Infrastructure on Midnight Network
 
 [![Midnight Network](https://img.shields.io/badge/Midnight-Preprod-00dbe7?style=for-the-badge)](https://midnight.network)
-[![Live Demo](https://img.shields.io/badge/Live-Demo-dcb8ff?style=for-the-badge)](https://zk-audit-bridge.vercel.app)
+[![Live Demo](https://img.shields.io/badge/Live-dcb8ff?style=for-the-badge)](https://zk-audit-bridge.vercel.app)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
 > **Prove compliance without revealing data. This is zero-knowledge.**
