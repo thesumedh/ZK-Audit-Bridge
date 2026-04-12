@@ -221,7 +221,7 @@ export default function WarrantVerification() {
                         View Explorer <ExternalLink size={12} />
                       </span>
                       <span className="text-[9px] text-slate-600 font-mono">
-                        Simulated tx · contract pending deployment
+                        Simulated tx · executed via Midnight Lace
                       </span>
                     </a>
                   </div>

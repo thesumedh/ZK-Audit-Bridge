@@ -15,7 +15,7 @@
 
 import { existsSync, readFileSync } from 'fs';
 import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, pathToFileURL } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -119,10 +119,11 @@ async function deploy() {
     const { deployContract }            = await import('@midnight-ntwrk/midnight-js-contracts');
 
     // Load compiled contract
-    const { Contract } = await import(join(compiledPath, 'contract.cjs'));
+    const { Contract } = await import(pathToFileURL(join(compiledPath, 'contract', 'index.js')).href);
+    const { default: WebSocket } = await import('ws');
 
     const providers = {
-      publicDataProvider:   indexerPublicDataProvider(CONFIG.indexerUri, CONFIG.indexerWsUri),
+      publicDataProvider:   indexerPublicDataProvider(CONFIG.indexerUri, CONFIG.indexerWsUri, WebSocket),
       proofProvider:        httpClientProofProvider(CONFIG.proofServerUri),
       privateStateProvider: levelPrivateStateProvider({ dbPath: './contracts/.private-state' }),
     };
