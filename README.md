@@ -5,6 +5,7 @@
 [![Midnight Network](https://img.shields.io/badge/Midnight-Preprod-00dbe7?style=for-the-badge)](https://midnight.network)
 [![Live Demo](https://img.shields.io/badge/Live-dcb8ff?style=for-the-badge)](https://zk-audit-bridge.vercel.app)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
+[![Watch Explanation](https://img.shields.io/badge/Watch-Explanation-ff0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/Vq6qdMEUxWs)
 
 > **Prove compliance without revealing data. This is zero-knowledge.**
 
@@ -298,6 +299,9 @@ Documentation              [██████████] 100% — Judges read
 5. **Check Agent Logs** → live streaming ZK agent process output
 
 ---
+
+
+
 
 *Built with ❤️ for the Midnight Network Hackathon*  
 *The internet deserves compliance without surveillance.*
