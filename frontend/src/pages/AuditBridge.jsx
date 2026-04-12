@@ -403,7 +403,7 @@ export default function AuditBridge() {
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-[10px] text-slate-500">{log.time}</span>
-                    <a href="https://explorer.preprod.midnight.network" target="_blank" rel="noopener noreferrer">
+                    <a href="https://explorer.preprod.midnight.network" target="_blank" rel="noopener noreferrer" title="Midnight Preprod Explorer (simulated tx)">
                       <ExternalLink size={11} className="text-slate-600 hover:text-primary transition-colors" />
                     </a>
                   </div>

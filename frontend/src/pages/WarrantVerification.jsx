@@ -212,12 +212,17 @@ export default function WarrantVerification() {
                       <p className="text-sm font-mono text-primary font-bold">{result.gasCost}</p>
                     </div>
                     <a
-                      href={`https://explorer.preprod.midnight.network/tx/${result.txHash}`}
+                      href="https://explorer.preprod.midnight.network"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-lg text-primary text-xs font-bold hover:bg-primary/20 transition-colors"
+                      className="flex flex-col items-end gap-1"
                     >
-                      View on Explorer <ExternalLink size={12} />
+                      <span className="flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-lg text-primary text-xs font-bold hover:bg-primary/20 transition-colors">
+                        View Explorer <ExternalLink size={12} />
+                      </span>
+                      <span className="text-[9px] text-slate-600 font-mono">
+                        Simulated tx · contract pending deployment
+                      </span>
                     </a>
                   </div>
 

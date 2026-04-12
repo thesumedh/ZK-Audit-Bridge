@@ -98,6 +98,8 @@ export function AppContextProvider({ children }) {
 
   // ── Sarah Demo Run ────────────────────────────────────────────
   const runSarahDemo = useCallback(async () => {
+    // Prevent re-run if already active
+    if (demoMode) return;
     setDemoMode(true);
     setDemoStep(1);
 
@@ -144,7 +146,7 @@ export function AppContextProvider({ children }) {
       id: 'PRT-SARAH-ZK', time: ts(0),
       hash: SARAH_DEMO.txHash.substring(0, 14) + '...',
       blockHeight: SARAH_DEMO.blockHeight, active: true,
-      explorerUrl: `https://explorer.preprod.midnight.network/tx/${SARAH_DEMO.txHash}`,
+      explorerUrl: `https://explorer.preprod.midnight.network`,
       isDemo: true,
     }, ...prev.map(l => ({ ...l, active: false }))]);
     setTotalAudits(n => n + 1);
