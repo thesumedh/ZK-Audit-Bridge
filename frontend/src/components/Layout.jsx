@@ -7,9 +7,18 @@ import {
   Loader2, BookOpen, Zap
 } from 'lucide-react';
 import { useWallet } from '../context/WalletContext';
+import { useAppContext } from '../context/AppContext';
 
 const TopNavBar = ({ onMenuToggle }) => {
   const { walletAddress, isConnecting, isWalletAvailable, connectionError, networkId, connectWallet, disconnectWallet } = useWallet();
+  const { runSarahDemo, demoMode } = useAppContext();
+  const navigate = useNavigate();
+
+  const handleDemo = async () => {
+    navigate('/audit-bridge');
+    // Small delay so page mounts before demo fires
+    setTimeout(() => runSarahDemo(), 200);
+  };
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-slate-950/80 backdrop-blur-xl shadow-[0_0_20px_rgba(0,242,255,0.08)]">
@@ -55,6 +64,21 @@ const TopNavBar = ({ onMenuToggle }) => {
             {isWalletAvailable ? 'Lace Ready' : 'No Extension'}
           </span>
         </div>
+
+        {/* ⚡ Live Demo Button */}
+        <motion.button
+          onClick={handleDemo}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+          className={`hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-widest transition-all border ${
+            demoMode
+              ? 'bg-secondary/10 border-secondary/40 text-secondary'
+              : 'bg-gradient-to-r from-secondary/10 to-primary/10 border-secondary/20 text-secondary hover:bg-secondary/15'
+          }`}
+        >
+          <Zap size={12} className={demoMode ? 'animate-pulse' : ''} />
+          {demoMode ? 'Demo Running' : '⚡ Live Demo'}
+        </motion.button>
 
         <button className="p-2 hover:bg-slate-800/50 rounded-lg transition-all duration-300 relative">
           <Bell className="text-cyan-400" size={20} />
